@@ -6,7 +6,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Application.Interfaces
 {
-    public interface IAppService<TEntity> : IWriteOnlyService<TEntity> where TEntity:IAggregateRoot, new()
+    public interface IAppService<TEntity> : IWriteOnlyService<TEntity> where TEntity:class, new()
     {
     }
 }

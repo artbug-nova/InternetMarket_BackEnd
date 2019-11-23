@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Core.Domain.Service
 {
-    public interface IWriteOnlyService<TEntity>:IDisposable where TEntity:IAggregateRoot, new()
+    public interface IWriteOnlyService<TEntity>:IDisposable where TEntity:class, new()
     {
         ValidationResult Add(TEntity entity);
         ValidationResult Add(IEnumerable<TEntity> entities);

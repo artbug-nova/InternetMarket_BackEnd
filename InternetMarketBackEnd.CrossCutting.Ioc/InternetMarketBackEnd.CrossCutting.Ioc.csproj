@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -6,8 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="Ninject" Version="3.3.4" />
-    <PackageReference Include="Ninject.Web.Common" Version="3.3.1" />
-    <PackageReference Include="Ninject.Web.WebApi" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InternetMarketBackEnd.Application\InternetMarketBackEnd.Application.csproj" />
   </ItemGroup>
 
 </Project>

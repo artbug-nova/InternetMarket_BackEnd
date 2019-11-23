@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using InternetMarketBackEnd.Application.Interfaces;
+using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
     {
         public override void Load()
         {
-            Bind<>.To<>();
+            //Bind<IOrderAppService>.To<>();
         }
     }
 }
