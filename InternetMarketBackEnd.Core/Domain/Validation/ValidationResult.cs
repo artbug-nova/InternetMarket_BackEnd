@@ -30,6 +30,13 @@ namespace InternetMarketBackEnd.Core.Domain
             return this;
         }
 
+        public ValidationResult Add(ValidationError error)
+        {
+            _errors.Add(error);
+            return this;
+        }
+
+
         public ValidationResult Add(params ValidationResult[] validationResults)
         {
             if (validationResults == null) return this;

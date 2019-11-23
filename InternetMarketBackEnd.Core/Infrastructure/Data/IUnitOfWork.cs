@@ -5,7 +5,7 @@ using NHibernate;
 
 namespace InternetMarketBackEnd.Core.Infrastructure.Data
 {
-    interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork: IDisposable
     {
         ISession CurrentSession { get; }
 
