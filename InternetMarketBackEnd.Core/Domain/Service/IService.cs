@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace InternetMarketBackEnd.Core.Domain.Service
 {
-    public interface IService<TEntity> : IWriteOnlyService<TEntity> where TEntity: IAggregateRoot, new()
+    public interface IService<TEntity> : IWriteOnlyService<TEntity> where TEntity: class, new()
     {
         TEntity FindBy(ISpecification<TEntity> spec, bool @readonly = false);
         IQueryable<TEntity> FilterBy(ISpecification<TEntity> spec, bool @readonly = false);
         IQueryable<TEntity> GetAll(bool @readonly = false);
-        TEntity GetById(bool @readonly = false);
+        TEntity GetById(object id, bool @readonly = false);
     }
 }
