@@ -59,6 +59,8 @@ namespace InternetMarketBackEnd
    
             });
             services.AddMvc(options=> options.EnableEndpointRouting = false);
+            
+
 
         }
 
