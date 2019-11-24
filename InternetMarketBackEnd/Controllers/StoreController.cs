@@ -11,10 +11,6 @@ namespace InternetMarketBackEnd.Controllers
     [Route("[controller]")]
     public class StoreController : BaseApiController
     {
-        [Route("Res")]
-        public string Result()
-        {
-            return "Hello APp";
-        }
+        //private IOrderAppService
     }
 }
