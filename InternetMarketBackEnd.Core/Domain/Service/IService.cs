@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace InternetMarketBackEnd.Core.Domain.Service
 {
-    public interface IService<TEntity> : IWriteOnlyService<TEntity> where TEntity: class, new()
+    public interface IService<TEntity> : IWriteOnlyService<TEntity> where TEntity: IAggregateRoot, new()
     {
         TEntity FindBy(ISpecification<TEntity> spec, bool @readonly = false);
         IQueryable<TEntity> FilterBy(ISpecification<TEntity> spec, bool @readonly = false);

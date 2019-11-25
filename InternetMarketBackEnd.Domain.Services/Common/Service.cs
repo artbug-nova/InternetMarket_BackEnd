@@ -1,4 +1,5 @@
 ﻿using InternetMarketBackEnd.Core.Domain;
+using InternetMarketBackEnd.Core.Domain.Entity;
 using InternetMarketBackEnd.Core.Domain.Repository;
 using InternetMarketBackEnd.Core.Domain.Service;
 using InternetMarketBackEnd.Core.Domain.Specification;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Domain.Services.Common
 {
-    public class Service<TEntity> : IService<TEntity> where TEntity : class, new()
+    public class Service<TEntity> : IService<TEntity> where TEntity : IAggregateRoot, new()
     {
 
         private readonly IRepository<TEntity> _repository;

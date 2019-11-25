@@ -5,7 +5,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Core.Domain.Repository
 {
-    public interface IWriteOnlyRepository<TEntity> : IDisposable where TEntity: class, new()
+    public interface IWriteOnlyRepository<TEntity> : IDisposable where TEntity: IAggregateRoot, new()
     {
         void Add(TEntity entity);
         void Add(IEnumerable<TEntity> entity);

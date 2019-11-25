@@ -10,5 +10,12 @@ namespace InternetMarketBackEnd.Domain.Services
     public class OrderService : Service<Order>, IOrderAppService
     {
         private readonly IOrderRepository _orderRepository;
+
+        public OrderService(IOrderRepository repository) : base(repository)
+        {
+            if (repository == null)
+                throw new ArgumentNullException("repository");
+            _orderRepository = repository;
+        }
     }
 }

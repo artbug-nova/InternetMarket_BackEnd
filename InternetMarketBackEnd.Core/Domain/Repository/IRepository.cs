@@ -7,7 +7,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Core.Domain.Repository
 {
-    public interface IRepository<TEntity>: IWriteOnlyRepository<TEntity> where TEntity: class, new()
+    public interface IRepository<TEntity>: IWriteOnlyRepository<TEntity> where TEntity: IAggregateRoot, new()
     {
         TEntity FindBy(ISpecification<TEntity> spec, bool @readonly = false);
         IQueryable<TEntity> FilterBy(ISpecification<TEntity> spec, bool @readonly = false);
