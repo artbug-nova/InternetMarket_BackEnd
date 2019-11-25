@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Ninject" Version="3.3.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\InternetMarketBackEnd.Application\InternetMarketBackEnd.Application.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Domain.Services\InternetMarketBackEnd.Domain.Services.csproj" />
   </ItemGroup>
 
 </Project>

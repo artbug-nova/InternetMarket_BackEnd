@@ -1,4 +1,5 @@
 ﻿using InternetMarketBackEnd.Core.Domain;
+using InternetMarketBackEnd.Core.Domain.Entity;
 using InternetMarketBackEnd.Domain.Entity.Validation;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Domain.Entity
 {
-    public class Order : ISelfValidation
+    public class Order : BaseEntity<long>, ISelfValidation
     {
         public Order() { }
         public int OrderId { get; set; }

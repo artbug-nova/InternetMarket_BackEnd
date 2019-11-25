@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InternetMarketBackEnd.Application\InternetMarketBackEnd.Application.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Core\InternetMarketBackEnd.Core.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
