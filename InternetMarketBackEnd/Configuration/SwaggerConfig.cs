@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace InternetMarketBackEnd.Configuration
 {
@@ -11,20 +14,12 @@ namespace InternetMarketBackEnd.Configuration
     {
         public static IServiceCollection ConfigureSwagger(this IServiceCollection services)
         {
-            services.AddSwaggerGen(options =>
+            services.AddSwaggerGen(c =>
             {
-                options.SwaggerDoc("v1", new Info()
-                {
-                    Version = "v1",
-                    Title = "SwaggerDefault",
-                    Description = @"Swagger  
-                    {
-                    'code': 200,
-                    'msg': 'New',
-                    'data': { }
-                    }",
-                });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+
 
             return services;
         }
