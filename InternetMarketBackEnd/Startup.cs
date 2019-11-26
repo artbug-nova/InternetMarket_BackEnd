@@ -27,6 +27,7 @@ namespace InternetMarketBackEnd
         {
             services.ConfigureAuth();
             services.ConfigureCors();
+            services.ConfigureSwagger();
             services.AddMvc(options=> options.EnableEndpointRouting = false);
         }
 
@@ -37,6 +38,14 @@ namespace InternetMarketBackEnd
             app.UseStaticFiles();
             app.UseCors("AllowAnyOrigin");
             app.UseAuthentication();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.DocumentTitle = "API Document";
+                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             app.UseMvc();
         }
     }
