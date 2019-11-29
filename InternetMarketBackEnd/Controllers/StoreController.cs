@@ -26,25 +26,25 @@ namespace InternetMarketBackEnd.Controllers
         [HttpDelete]
         public IActionResult Delete(long id)
         {
-            throw new NotImplementedException();
+            return Ok();
         }
 
         [HttpGet]
         public IActionResult GetOrderById(long id)
         {
-            throw new NotImplementedException();
+            return Ok();
         }
 
         [HttpPost]
         public IActionResult Post(Order order)
         {
-            throw new NotImplementedException();
+            return Ok();
         }
 
         [HttpPut]
         public IActionResult Put(Order id)
         {
-            throw new NotImplementedException();
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
