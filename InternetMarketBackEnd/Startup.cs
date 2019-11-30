@@ -1,9 +1,11 @@
 using InternetMarketBackEnd.Configuration;
+using InternetMarketBackEnd.Infra.Data;
 using InternetMarketBackEnd.token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +27,11 @@ namespace InternetMarketBackEnd
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<MarketContext>(options =>
+            {
+                options.UseSqlServer("");
+                
+            });
             services.AddControllers();
             //services.ConfigureAuth();
             services.ConfigureCors();

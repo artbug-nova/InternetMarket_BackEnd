@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -19,12 +19,14 @@
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\InternetMarketBackEnd.Application\InternetMarketBackEnd.Application.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Infra.Data\InternetMarketBackEnd.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

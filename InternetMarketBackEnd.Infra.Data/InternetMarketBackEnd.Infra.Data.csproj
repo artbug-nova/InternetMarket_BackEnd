@@ -5,12 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentNHibernate" Version="2.1.2" />
-    <PackageReference Include="NHibernate" Version="5.2.6" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\InternetMarketBackEnd.Core\InternetMarketBackEnd.Core.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.CrossCutting.Config\InternetMarketBackEnd.CrossCutting.Config.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj" />
   </ItemGroup>
 

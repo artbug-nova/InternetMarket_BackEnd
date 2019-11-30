@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.Infra.Data.Test", "InternetMarketBackEnd.Infra.Data.Test\InternetMarketBackEnd.Infra.Data.Test.csproj", "{D0467FB1-66D4-47B8-8C3C-7D5915D29CD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetMarketBackEnd.Shared", "InternetMarketBackEnd.Shared\InternetMarketBackEnd.Shared.csproj", "{DF25D3CE-45B3-4851-9CBA-1717AE6125D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.Shared", "InternetMarketBackEnd.Shared\InternetMarketBackEnd.Shared.csproj", "{DF25D3CE-45B3-4851-9CBA-1717AE6125D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
