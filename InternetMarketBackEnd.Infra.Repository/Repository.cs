@@ -25,7 +25,16 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
             => await Task.FromResult(dbSet);
 
         public async Task AddAsync(TEntity entity)
-            => await dbSet.AddAsync(entity);
+        {
+            
+            dbSet.Add(entity);
+            DbContext.SaveChanges();
+        }
+        public void Add(TEntity entity)
+        {
+            dbSet.Add(entity);
+            DbContext.SaveChanges();
+        }
 
         public async Task UpdateAsync(TEntity entity)
             => await Task.FromResult(dbSet.Update(entity));
@@ -41,7 +50,7 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
             }
             catch (Exception e)
             {
-                throw;
+                throw new Exception(e.Message);
             }
         }
 
