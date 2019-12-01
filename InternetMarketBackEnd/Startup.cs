@@ -17,6 +17,8 @@ using System;
 using Autofac.Extensions.DependencyInjection;
 using InternetMarketBackEnd.CrossCutting.Ioc.Module;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Hosting;
 
 namespace InternetMarketBackEnd
 {
@@ -29,6 +31,7 @@ namespace InternetMarketBackEnd
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                .AddEnvironmentVariables();
+            
             this.Configuration = builder.Build();
             //Configuration = configuration;
         }
@@ -48,9 +51,10 @@ namespace InternetMarketBackEnd
             //services.ConfigureAuth();
             services.ConfigureCors();
             services.ConfigureSwagger();
+      
             //services.AddMvc(options=> options.EnableEndpointRouting = false);
 
-            
+
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
@@ -62,28 +66,30 @@ namespace InternetMarketBackEnd
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDefaultFiles();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
             app.UseStaticFiles();
             app.UseCors("AllowAnyOrigin");
-            app.UseAuthentication();
-            app.UseHttpsRedirection();
+
+            app.UseRouting();
+            app.UseAuthorization();
+
             app.UseSwagger();
-            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MarketApi V1");
             });
-            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            /*app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });*/
 
-  
+
         }
     }
 }

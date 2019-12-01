@@ -10,8 +10,9 @@ using InternetMarketBackEnd.Domain.Entity;
 namespace InternetMarketBackEnd.Controllers
 {
     //api/values/getrole
+    [ApiController]
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ValuesController : ControllerBase
     {
         private readonly IOrderAppService service;
         public ValuesController(IOrderAppService service)
@@ -19,6 +20,7 @@ namespace InternetMarketBackEnd.Controllers
             this.service = service;
         }
         [Route("getlogin")]
+        [HttpGet]
         public IActionResult GetLogin()
         {
             return Ok($"Ваш логин: {User.Identity.Name}");

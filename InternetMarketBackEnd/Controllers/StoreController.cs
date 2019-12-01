@@ -10,8 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [Route("[controller]")]
-    public class StoreController : BaseApiController, IStoreController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class StoreController : ControllerBase, IStoreController
     {
         private readonly IOrderAppService _orderAppService;
 
@@ -47,9 +48,9 @@ namespace InternetMarketBackEnd.Controllers
             return Ok();
         }
 
-        protected override void Dispose(bool disposing)
+        /*protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-        }
+        }*/
     }
 }
