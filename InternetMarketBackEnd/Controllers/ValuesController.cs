@@ -5,6 +5,7 @@ using InternetMarketBackEnd.Infra.Repository;
 using InternetMarketBackEnd.Infra.Data;
 using InternetMarketBackEnd.Application.Interfaces;
 using InternetMarketBackEnd.CrossCutting.Ioc.Module;
+using InternetMarketBackEnd.Domain.Entity;
 
 namespace InternetMarketBackEnd.Controllers
 {
@@ -25,8 +26,12 @@ namespace InternetMarketBackEnd.Controllers
 
         [Route("getrole")]
         [HttpGet]
-        public IActionResult GetRole()
+        public IActionResult GetRole(int price)
         {
+            service.Add(new Order{ 
+
+                Price = price
+            });
             
             return Ok(this.service.Get());
         }

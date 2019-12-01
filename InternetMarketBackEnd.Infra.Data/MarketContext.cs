@@ -1,4 +1,5 @@
 ﻿using InternetMarketBackEnd.CrossCutting.Config.Config;
+using InternetMarketBackEnd.Infra.Repository.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,10 @@ namespace InternetMarketBackEnd.Infra.Data
     public class MarketContext : BaseDBContext
     {
         public MarketContext(DbContextOptions options) : base(options)
-        {}
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        { }
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            builder.ApplyConfiguration(new OrderMapping());
         }
     }
 }

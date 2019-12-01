@@ -83,11 +83,12 @@ namespace InternetMarketBackEnd.Domain.Services.Common
         #region CRUD
         public virtual ValidationResult Add(TEntity entity)
         {
-            if (ValidationResult.IsValid)
-                return ValidationResult;
+            /*if (ValidationResult.IsValid)
+                return ValidationResult;*/
 
             //_repository.Add(entity);
-
+            _repository.Add(entity);
+            //_repository.AddAsync(entity);
             return _validationResult;
         }
 

@@ -9,6 +9,7 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
 {
     public interface IRepository<TEntity> where TEntity: IAggregateRoot, new()
     {
+        void Add(TEntity entity);
         Task<TEntity> GetAsync(int id);
         Task<IQueryable<TEntity>> GetAsync();
         Task AddAsync(TEntity entity);
