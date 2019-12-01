@@ -13,9 +13,9 @@ using InternetMarketBackEnd.Controllers.Common;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AccountController : BaseApiController
+    [Route("api/[controller]")]
+    public class AccountController : ControllerBase
     {
         private List<Person> people = new List<Person>
         {
@@ -23,11 +23,13 @@ namespace InternetMarketBackEnd.Controllers
             new Person { Login="qwerty", Password="55555", Role = "user" }
         };
         [Route("/token2")]
+        [HttpGet]
         public Task Token2()
         {
             return Task.FromResult<int>(0);
         }
-        [HttpPost("/token")]
+        [Route("/token")]
+        [HttpPost]
         public async Task Token()
         {
             var username = Request.Form["username"];

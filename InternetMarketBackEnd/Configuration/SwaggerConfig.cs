@@ -16,9 +16,8 @@ namespace InternetMarketBackEnd.Configuration
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Internet Swagger", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MarketStore", Version = "v1" });
             });
-
 
 
             return services;
