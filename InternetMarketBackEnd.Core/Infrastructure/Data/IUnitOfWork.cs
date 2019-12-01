@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Data;
-using NHibernate;
 
 
 namespace InternetMarketBackEnd.Core.Infrastructure.Data
 {
-    public interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork<TContext>: IDisposable where TContext: IDbContext, new()
     {
-        ISession CurrentSession { get; }
-
         void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
 
-        void Commit();
+        void SaveChanges();
 
         void Rollback();
     }

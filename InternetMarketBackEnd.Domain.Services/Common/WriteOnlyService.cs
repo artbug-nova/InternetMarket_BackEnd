@@ -1,4 +1,5 @@
 ﻿using InternetMarketBackEnd.Core.Domain;
+using InternetMarketBackEnd.Core.Domain.Entity;
 using InternetMarketBackEnd.Core.Domain.Repository;
 using InternetMarketBackEnd.Core.Domain.Service;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Domain.Services.Common
 {
-    public class WriteOnlyService<TEntity> : IWriteOnlyService<TEntity> where TEntity : class, new()
+    public class WriteOnlyService<TEntity> : IWriteOnlyService<TEntity> where TEntity : IAggregateRoot, new()
     {
         private readonly IWriteOnlyRepository<TEntity> _writeOnlyRepository;
         private readonly ValidationResult _validationResult;

@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Data;
 using InternetMarketBackEnd.Core.Infrastructure.Data;
-using NHibernate;
+
 
 namespace InternetMarketBackEnd.Infra.Data.NHibernate
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork<TEntity> : IUnitOfWork
     {
-        private ISession _session;
-        public ISession CurrentSession { get { return _session; } }
-
-        private ITransaction _transaction;
-
+        
         public UnitOfWork()
         {
             OpenSession();
@@ -19,28 +15,28 @@ namespace InternetMarketBackEnd.Infra.Data.NHibernate
 
         private void OpenSession()
         {
-            if(_session == null || !_session.IsConnected)
+            /*if(_session == null || !_session.IsConnected)
             {
                 if (_session != null)
                     _session.Dispose();
                 _session = NHSessionFactorySingleton.SessionFactory.OpenSession();
-            }
+            }*/
         }
 
 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            if(_transaction == null || !_transaction.IsActive)
+            /*if(_transaction == null || !_transaction.IsActive)
             {
                 if (_transaction != null)
                     _transaction.Dispose();
                 _transaction = _session.BeginTransaction(isolationLevel);
-            }
+            }*/
         }
 
         public void Commit()
         {
-            try
+            /*try
             {
                 if (_transaction != null && _transaction.IsActive)
                     _transaction.Commit();
@@ -54,11 +50,11 @@ namespace InternetMarketBackEnd.Infra.Data.NHibernate
             finally
             {
                 Dispose();
-            }
+            }*/
         }
         public void Rollback()
         {
-            try
+            /*try
             {
                 if (_transaction != null && _transaction.IsActive)
                     _transaction.Rollback();
@@ -66,12 +62,12 @@ namespace InternetMarketBackEnd.Infra.Data.NHibernate
             finally
             {
                 Dispose();
-            }
+            }*/
         }
 
         public void Dispose()
         {
-            if(_transaction != null)
+            /*if(_transaction != null)
             {
                 _transaction.Dispose();
                 _transaction = null;
@@ -82,7 +78,7 @@ namespace InternetMarketBackEnd.Infra.Data.NHibernate
                 _session.Close();
                 _session.Dispose();
                 _session = null;
-            }
+            }*/
             GC.SuppressFinalize(this);
         }
 

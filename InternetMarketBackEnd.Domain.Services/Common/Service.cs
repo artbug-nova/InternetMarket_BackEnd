@@ -1,8 +1,9 @@
 ﻿using InternetMarketBackEnd.Core.Domain;
 using InternetMarketBackEnd.Core.Domain.Entity;
-using InternetMarketBackEnd.Core.Domain.Repository;
+
 using InternetMarketBackEnd.Core.Domain.Service;
 using InternetMarketBackEnd.Core.Domain.Specification;
+using InternetMarketBackEnd.Infra.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace InternetMarketBackEnd.Domain.Services.Common
         {
             if (disposing)
             {
-                _repository.Dispose();
+                //_repository.Dispose();
                 GC.SuppressFinalize(this);
             }
         }
@@ -57,22 +58,26 @@ namespace InternetMarketBackEnd.Domain.Services.Common
 
         public IQueryable<TEntity> FilterBy(ISpecification<TEntity> spec, bool @readonly = false)
         {
-            return _repository.FilterBy(spec, @readonly);
+            throw new NotImplementedException();
+            //return _repository.FilterBy(spec, @readonly);
         }
 
         public TEntity FindBy(ISpecification<TEntity> spec, bool @readonly = false)
         {
-            return _repository.FindBy(spec, @readonly);
+            throw new NotImplementedException();
+            //return _repository.FindBy(spec, @readonly);
         }
 
         public IQueryable<TEntity> GetAll(bool @readonly = false)
         {
-            return _repository.GetAll(@readonly);
+            throw new NotImplementedException();
+            //return _repository.GetAll(@readonly);
         }
 
         public TEntity GetById(object id, bool @readonly = false)
         {
-            return _repository.GetById(id, @readonly);
+            throw new NotImplementedException();
+            //return TEntity;//_repository.GetById(id, @readonly);
         }
 
         #region CRUD
@@ -81,7 +86,7 @@ namespace InternetMarketBackEnd.Domain.Services.Common
             if (ValidationResult.IsValid)
                 return ValidationResult;
 
-            _repository.Add(entity);
+            //_repository.Add(entity);
 
             return _validationResult;
         }
@@ -96,7 +101,7 @@ namespace InternetMarketBackEnd.Domain.Services.Common
             if (!ValidationResult.IsValid)
                 return ValidationResult;
 
-            _repository.Update(entity);
+            //_repository.Update(entity);
 
             return _validationResult;
         }
@@ -109,7 +114,7 @@ namespace InternetMarketBackEnd.Domain.Services.Common
         {
             if (!ValidationResult.IsValid)
                 return ValidationResult;
-            _repository.Remove(entity);
+            //_repository.Remove(entity);
 
             return ValidationResult;
         }
