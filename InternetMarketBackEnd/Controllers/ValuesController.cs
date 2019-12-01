@@ -4,6 +4,7 @@ using InternetMarketBackEnd.Domain.Services;
 using InternetMarketBackEnd.Infra.Repository;
 using InternetMarketBackEnd.Infra.Data;
 using InternetMarketBackEnd.Application.Interfaces;
+using InternetMarketBackEnd.CrossCutting.Ioc.Module;
 
 namespace InternetMarketBackEnd.Controllers
 {
@@ -12,9 +13,9 @@ namespace InternetMarketBackEnd.Controllers
     public class ValuesController : Controller
     {
         private readonly IOrderAppService service;
-        public ValuesController(/*IOrderAppService service*/)
+        public ValuesController(IOrderAppService service)
         {
-            //this.service = service;
+            this.service = service;
         }
         [Route("getlogin")]
         public IActionResult GetLogin()
