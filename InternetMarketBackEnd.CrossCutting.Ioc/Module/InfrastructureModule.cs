@@ -11,7 +11,7 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<IDbContext>().As<MarketContext>().InstancePerLifetimeScope();
+            builder.RegisterType<MarketContext>().As<IDbContext>().InstancePerLifetimeScope();
         }
     }
 }

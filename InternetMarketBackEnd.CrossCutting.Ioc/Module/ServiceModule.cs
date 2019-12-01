@@ -8,6 +8,7 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
+            //builder.RegisterType<Example>().As<IExample>();
             builder.RegisterType<OrderService>().As<IOrderAppService>().InstancePerLifetimeScope();
         }
     }
