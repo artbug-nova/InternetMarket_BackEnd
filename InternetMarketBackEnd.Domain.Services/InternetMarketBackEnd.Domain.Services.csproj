@@ -8,6 +8,7 @@
     <ProjectReference Include="..\InternetMarketBackEnd.Application\InternetMarketBackEnd.Application.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Core\InternetMarketBackEnd.Core.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Infra.Repository\InternetMarketBackEnd.Infra.Repository.csproj" />
   </ItemGroup>
 
 </Project>

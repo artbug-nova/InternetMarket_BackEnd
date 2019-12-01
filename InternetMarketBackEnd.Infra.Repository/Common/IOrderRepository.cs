@@ -12,6 +12,6 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        Task<IList<Order>> GetOrderAsync(int id);
+       
     }
 }

@@ -7,5 +7,7 @@ namespace InternetMarketBackEnd.Application.Interfaces
 {
     public interface IOrderAppService : IAppService<Order>
     {
+        String Get();
+        
     }
 }

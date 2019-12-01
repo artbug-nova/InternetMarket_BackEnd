@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
@@ -25,6 +26,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InternetMarketBackEnd.Application\InternetMarketBackEnd.Application.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.CrossCutting.Ioc\InternetMarketBackEnd.CrossCutting.Ioc.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Domain.Services\InternetMarketBackEnd.Domain.Services.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Infra.Data\InternetMarketBackEnd.Infra.Data.csproj" />
   </ItemGroup>

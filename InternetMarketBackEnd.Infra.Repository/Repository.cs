@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InternetMarketBackEnd.Infra.Repository.Common
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity<long>
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity<long>, new()
     {
 
         private readonly IDbContext DbContext;

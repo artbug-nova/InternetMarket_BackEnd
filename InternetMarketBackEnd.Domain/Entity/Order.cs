@@ -9,7 +9,7 @@ namespace InternetMarketBackEnd.Domain.Entity
 {
     public class Order : BaseEntity<long>, ISelfValidation
     {
-        public Order() { }
+        //public Order() { }
         public int OrderId { get; set; }
         public decimal Price { get; set; }
         public ValidationResult ValidationResult { get; private set; }

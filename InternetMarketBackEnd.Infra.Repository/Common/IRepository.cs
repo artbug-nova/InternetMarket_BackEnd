@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InternetMarketBackEnd.Infra.Repository.Common
 {
-    public interface IRepository<TEntity> where TEntity: IAggregateRoot
+    public interface IRepository<TEntity> where TEntity: IAggregateRoot, new()
     {
         Task<TEntity> GetAsync(int id);
         Task<IQueryable<TEntity>> GetAsync();
