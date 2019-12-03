@@ -58,5 +58,15 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
         {
             throw new NotImplementedException();
         }
+
+        public TEntity GetById(int id)
+        {
+            return dbSet.SingleOrDefault(s => s.Id == id);
+        }
+
+        public void Update(TEntity entity)
+        {
+            dbSet.Update(entity);
+        }
     }
 }

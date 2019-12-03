@@ -76,7 +76,7 @@ namespace InternetMarketBackEnd.Domain.Services.Common
 
         public TEntity GetById(object id, bool @readonly = false)
         {
-            throw new NotImplementedException();
+            return _repository.GetById((int)id);
             //return TEntity;//_repository.GetById(id, @readonly);
         }
 
