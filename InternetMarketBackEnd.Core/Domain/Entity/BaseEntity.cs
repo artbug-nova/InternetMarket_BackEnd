@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace InternetMarketBackEnd.Core.Domain.Entity
     public abstract class BaseEntity<TKey>: IEquatable<IEntity<TKey>>, IAggregateRoot
     {
         private TKey _Id;
-
+        [Key]
         public virtual TKey Id
         {
             get

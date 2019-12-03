@@ -19,23 +19,29 @@ namespace InternetMarketBackEnd.Controllers
         {
             this.service = service;
         }
-        [Route("getlogin")]
-        [HttpGet]
-        public IActionResult GetLogin()
+        [Route("update")]
+        [HttpPut]
+        public IActionResult UpdateOrder(Order order)
         {
-            return Ok($"Ваш логин: {User.Identity.Name}");
+            Order a = service.GetById(order.Id);
+            a.OrderId = order.OrderId;
+            a.Price = order.Price;
+            a.Name = order.Name;
+            service.Update(order);
+            return Ok(a);
         }
 
-        [Route("getrole")]
-        [HttpGet]
-        public IActionResult GetRole(int price)
+        [Route("add")]
+        [HttpPost]
+        public IActionResult AddOrder([FromBody]Order order)
         {
             service.Add(new Order{ 
-
-                Price = price
+                Name = order.Name,
+                OrderId = order.OrderId,
+                Price = order.Price
             });
             
-            return Ok(this.service.Get());
+            return Ok(order);
         }
     }
 }

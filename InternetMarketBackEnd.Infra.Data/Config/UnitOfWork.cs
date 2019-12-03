@@ -1,26 +1,19 @@
-﻿using System;
+﻿using InternetMarketBackEnd.Core.Infrastructure.Data;
+using System;
 using System.Data;
-using InternetMarketBackEnd.Core.Infrastructure.Data;
+
 
 
 namespace InternetMarketBackEnd.Infra.Data.NHibernate
 {
-    public class UnitOfWork<TEntity> : IUnitOfWork
+    public class UnitOfWork<TContext> : IUnitOfWork<TContext>, IDisposable
+        where TContext:IDbContext, new()
     {
-        
+        private readonly IDbContext _dbContext;
+        private bool _disposed;
         public UnitOfWork()
         {
-            OpenSession();
-        }
-
-        private void OpenSession()
-        {
-            /*if(_session == null || !_session.IsConnected)
-            {
-                if (_session != null)
-                    _session.Dispose();
-                _session = NHSessionFactorySingleton.SessionFactory.OpenSession();
-            }*/
+           
         }
 
 
@@ -82,5 +75,14 @@ namespace InternetMarketBackEnd.Infra.Data.NHibernate
             GC.SuppressFinalize(this);
         }
 
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BeginTransaction()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

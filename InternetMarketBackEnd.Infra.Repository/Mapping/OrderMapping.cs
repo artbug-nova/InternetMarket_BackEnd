@@ -11,7 +11,8 @@ namespace InternetMarketBackEnd.Infra.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.HasKey(s => s.OrderId);
+            builder.HasKey(s => s.Id);
+            builder.Property(s => s.OrderId);
             builder.Property(s => s.Price).IsRequired();
         }
     }

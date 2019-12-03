@@ -22,18 +22,12 @@ namespace InternetMarketBackEnd.Controllers
             new Person {Login="admin@gmail.com", Password="12345", Role = "admin" },
             new Person { Login="qwerty", Password="55555", Role = "user" }
         };
-        [Route("/token2")]
-        [HttpGet]
-        public Task Token2()
-        {
-            return Task.FromResult<int>(0);
-        }
         [Route("/token")]
         [HttpPost]
-        public async Task Token()
+        public async Task Token(Person user)
         {
-            var username = Request.Form["username"];
-            var password = Request.Form["password"];
+            var username = user.Login;//Request.Form["username"];
+            var password = user.Password;//Request.Form["password"];
 
             var identity = GetIdentity(username, password);
             if (identity == null)

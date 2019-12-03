@@ -42,19 +42,11 @@ namespace InternetMarketBackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.AddDbContext<MarketContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("MarketDatabase"));
-                
-            });
             services.AddControllers();
-            //services.ConfigureAuth();
+            services.ConfigureAuth();
+            services.ConfigureEF(Configuration.GetConnectionString("MarketDatabase"));
             services.ConfigureCors();
             services.ConfigureSwagger();
-      
-            //services.AddMvc(options=> options.EnableEndpointRouting = false);
-
-
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
@@ -66,30 +58,21 @@ namespace InternetMarketBackEnd
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
             app.UseStaticFiles();
             app.UseCors("AllowAnyOrigin");
-
             app.UseRouting();
             app.UseAuthorization();
-
             app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MarketApi V1");
-            });
+            app.ApplicationSwagger();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-
         }
     }
 }
