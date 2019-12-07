@@ -10,9 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class StoreController : ControllerBase, IStoreController
+    public class StoreController : BaseApiController, IStoreController
     {
         private readonly IOrderAppService _orderAppService;
 

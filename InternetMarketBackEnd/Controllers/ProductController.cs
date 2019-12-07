@@ -1,4 +1,5 @@
 ﻿using InternetMarketBackEnd.Application.Interfaces;
+using InternetMarketBackEnd.Controllers.Common;
 using InternetMarketBackEnd.Domain.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseApiController
     {
         private readonly IProductAppService _appService;
         public ProductController(IProductAppService appService)

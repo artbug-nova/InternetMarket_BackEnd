@@ -13,9 +13,8 @@ using InternetMarketBackEnd.Controllers.Common;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseApiController
     {
         private List<Person> people = new List<Person>
         {
