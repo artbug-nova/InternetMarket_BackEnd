@@ -24,7 +24,7 @@ namespace InternetMarketBackEnd.Controllers
         public IActionResult UpdateOrder(Order order)
         {
             Order a = service.GetById(order.Id);
-            a.OrderId = order.OrderId;
+            a.ProductId= order.ProductId;
             a.Price = order.Price;
             a.Name = order.Name;
             service.Update(order);
@@ -37,7 +37,7 @@ namespace InternetMarketBackEnd.Controllers
         {
             service.Add(new Order{ 
                 Name = order.Name,
-                OrderId = order.OrderId,
+                ProductId = order.ProductId,
                 Price = order.Price
             });
             

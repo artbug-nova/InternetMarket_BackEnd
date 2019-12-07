@@ -14,9 +14,10 @@ namespace InternetMarketBackEnd.Domain.Entity
     {
         //public Order() { }
         
-        public int OrderId { get; set; }
         public String Name { get; set; }
         public decimal Price { get; set; }
+        public long ProductId { get; set; }
+        public Product Product { get; set; }
         [NotMapped]
         [JsonIgnore]
         public ValidationResult ValidationResult { get; private set; }

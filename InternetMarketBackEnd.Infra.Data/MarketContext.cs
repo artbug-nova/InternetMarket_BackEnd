@@ -14,6 +14,7 @@ namespace InternetMarketBackEnd.Infra.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new OrderMapping());
+            builder.ApplyConfiguration(new ProductMapping());
         }
     }
 }

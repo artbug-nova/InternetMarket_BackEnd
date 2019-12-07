@@ -7,11 +7,11 @@ using System;
 
 namespace InternetMarketBackEnd.Domain.Services
 {
-    public class OrderService : Service<Order>, IOrderAppService
+    public class OrderAppService : Service<Order>, IOrderAppService
     {
         private readonly IOrderRepository _orderRepository;
 
-        public OrderService(IOrderRepository repository) : base(repository)
+        public OrderAppService(IOrderRepository repository) : base(repository)
         {
             if (repository == null)
                 throw new ArgumentNullException("repository");

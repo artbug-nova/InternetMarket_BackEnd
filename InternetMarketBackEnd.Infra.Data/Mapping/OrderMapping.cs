@@ -12,8 +12,11 @@ namespace InternetMarketBackEnd.Infra.Data.Mapping
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.HasKey(s => s.Id);
-            builder.Property(s => s.OrderId);
+            builder.Property(s => s.ProductId);
             builder.Property(s => s.Price).IsRequired();
+            builder.HasOne(c => c.Product)
+                .WithMany(c => c.Orders)
+                .HasForeignKey(c => c.ProductId).IsRequired();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<OrderRepository>().As<IOrderRepository>();
+            builder.RegisterType<ProductRepository>().As<IProductRepository>();
         }
     }
 }
