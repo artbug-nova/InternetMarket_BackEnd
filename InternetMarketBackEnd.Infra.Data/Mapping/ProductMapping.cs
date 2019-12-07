@@ -13,6 +13,7 @@ namespace InternetMarketBackEnd.Infra.Data.Mapping
         {
             builder.HasKey(key => key.Id);
             builder.Property(prop => prop.Name);
+            builder.Property(prop => prop.Description);
             builder.Property(prop => prop.Price);
         }
     }

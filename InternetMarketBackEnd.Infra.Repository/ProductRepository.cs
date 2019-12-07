@@ -7,7 +7,7 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Infra.Repository
 {
-    public class ProductRepository : Repository<Product>, IRepository<Product>
+    public class ProductRepository : Repository<Product>, IProductRepository
     {
         private readonly IDbContext dbContext;
 

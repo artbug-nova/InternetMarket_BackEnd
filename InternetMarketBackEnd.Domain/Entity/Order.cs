@@ -15,9 +15,11 @@ namespace InternetMarketBackEnd.Domain.Entity
         //public Order() { }
         
         public String Name { get; set; }
+        public String ShortDesctiption { get; set; }
         public decimal Price { get; set; }
         public long ProductId { get; set; }
         public Product Product { get; set; }
+        public ICollection<OrderUserBag> OrderUserBags { get; set; }
         [NotMapped]
         [JsonIgnore]
         public ValidationResult ValidationResult { get; private set; }

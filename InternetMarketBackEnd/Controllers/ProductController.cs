@@ -17,15 +17,24 @@ namespace InternetMarketBackEnd.Controllers
         {
             _appService = appService;
         }
+        [HttpGet]
+        [Route("add")]
         public IActionResult Add()
         {
             _appService.Add(new Product
             {
                 Name = "пылесос",
-                Description = "Super pile",
+                //Description = "Super pile",
                 Price = 11
             });
             return Ok();
+        }
+        
+        [HttpGet("/get/{id}")]
+        public IActionResult Get(int id)
+        {
+            var data = _appService.GetById(id);
+            return Ok(data);
         }
     }
 }
