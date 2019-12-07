@@ -1,88 +1,76 @@
 ﻿using InternetMarketBackEnd.Core.Infrastructure.Data;
+using InternetMarketBackEnd.Infra.Data.Config;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Data;
 
 
 
-namespace InternetMarketBackEnd.Infra.Data.NHibernate
+namespace InternetMarketBackEnd.Infra.Data.Config
 {
     public class UnitOfWork<TContext> : IUnitOfWork<TContext>, IDisposable
-        where TContext:IDbContext, new()
+        where TContext:IDbContext
     {
-        private readonly IDbContext _dbContext;
+        public IDbContext _marketContext;
+        private IDbContextTransaction _transaction;
         private bool _disposed;
-        public UnitOfWork()
-        {
-           
-        }
 
+        //public IUnitOfWork<TContext> MarketContext { get { return _marketContext; } private set ; }
 
-        public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-        {
-            /*if(_transaction == null || !_transaction.IsActive)
-            {
-                if (_transaction != null)
-                    _transaction.Dispose();
-                _transaction = _session.BeginTransaction(isolationLevel);
-            }*/
-        }
+        
+        public IDbContext MarketContext { get => _marketContext; }
 
-        public void Commit()
+        public UnitOfWork(IDbContext marketContext)
         {
-            /*try
-            {
-                if (_transaction != null && _transaction.IsActive)
-                    _transaction.Commit();
-            }
-            catch
-            {
-                if (_transaction != null && _transaction.IsActive)
-                    _transaction.Rollback();
-                throw;
-            }
-            finally
-            {
-                Dispose();
-            }*/
-        }
-        public void Rollback()
-        {
-            /*try
-            {
-                if (_transaction != null && _transaction.IsActive)
-                    _transaction.Rollback();
-            }
-            finally
-            {
-                Dispose();
-            }*/
-        }
-
-        public void Dispose()
-        {
-            /*if(_transaction != null)
-            {
-                _transaction.Dispose();
-                _transaction = null;
-            }
-            if (_session != null)
-            {
-                _session.Flush();
-                _session.Close();
-                _session.Dispose();
-                _session = null;
-            }*/
-            GC.SuppressFinalize(this);
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
+            _marketContext = marketContext;
         }
 
         public void BeginTransaction()
         {
-            throw new NotImplementedException();
+            if(_transaction == null)
+            {
+                
+                if (_transaction != null)
+                    _transaction.Dispose();
+                _transaction = ((DbContext)_marketContext).Database.BeginTransaction();
+            }
         }
+
+        public void Rollback()
+        {
+            try
+            {
+                if (_transaction != null)
+                    _transaction.Rollback();
+            }
+            finally
+            {
+                _transaction.Dispose();
+            }
+        }
+
+        public void SaveChanges()
+        {
+            if (_marketContext != null)
+            {
+                _marketContext.SaveChanges();
+            }
+        }
+        public void Dispose()
+        {
+            if(_transaction != null)
+            {
+                _transaction.Dispose();
+                _transaction = null;
+            }
+            if(_marketContext != null)
+            {
+                _marketContext.Dispose();
+                _marketContext = null;
+            }
+            GC.SuppressFinalize(this);
+        }
+
     }
 }

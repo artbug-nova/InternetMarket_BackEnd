@@ -1,5 +1,6 @@
 ﻿using InternetMarketBackEnd.Core.Domain.Entity;
 using InternetMarketBackEnd.Core.Infrastructure.Data;
+using InternetMarketBackEnd.Infra.Data.Config;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,14 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity<long>, new()
     {
 
+        
         private readonly IDbContext DbContext;
         private readonly DbSet<TEntity> dbSet;
 
         public Repository(IDbContext dbContext)
         {
             this.DbContext = dbContext;
-            this.dbSet = dbContext.Set<TEntity>();
+            this.dbSet = DbContext.Set<TEntity>();
         }
 
         public async Task<IQueryable<TEntity>> GetAsync()

@@ -1,5 +1,5 @@
 ﻿using InternetMarketBackEnd.CrossCutting.Config.Config;
-using InternetMarketBackEnd.Infra.Repository.Mapping;
+using InternetMarketBackEnd.Infra.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
