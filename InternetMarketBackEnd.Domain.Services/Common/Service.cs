@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InternetMarketBackEnd.Domain.Services.Common
 {
@@ -123,6 +124,24 @@ namespace InternetMarketBackEnd.Domain.Services.Common
         public virtual ValidationResult Remove(IEnumerable<TEntity> entities)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ValidationResult> AddAsync(TEntity entity)
+        {
+            await _repository.AddAsync(entity);
+            return _validationResult;
+        }
+
+        public async Task<ValidationResult> UpdateAsync(TEntity entity)
+        {
+            await _repository.UpdateAsync(entity);
+            return _validationResult;
+        }
+
+        public async Task<ValidationResult> RemoveAsync(TEntity entity)
+        {
+            await _repository.DeleteAsync(entity);
+            return _validationResult;
         }
         #endregion
     }

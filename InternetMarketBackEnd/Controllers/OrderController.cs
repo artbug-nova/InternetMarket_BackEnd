@@ -11,45 +11,43 @@ using Microsoft.AspNetCore.Mvc;
 namespace InternetMarketBackEnd.Controllers
 {
     [Route("api/[controller]")]
-    public class StoreController : BaseApiController, IStoreController
+    public class OrderController : BaseApiController, ICRUDController<Order>
     {
         private readonly IOrderAppService _orderAppService;
 
 
-        public StoreController(IOrderAppService orderAppService)
+        public OrderController(IOrderAppService orderAppService)
         {
             if (orderAppService == null)
                 throw new ArgumentNullException("IOrderAppService");
             _orderAppService = orderAppService;
         }
 
-        [HttpDelete]
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> Add(Order order)
         {
+            await _orderAppService.AddAsync(order);
+            return Ok(order);
+        }
+
+        public async Task<IActionResult> Delete(long id)
+        {
+            var order = _orderAppService.GetById(id);
+            await _orderAppService.RemoveAsync(order);
+
             return Ok();
         }
 
-        [HttpGet]
-        public IActionResult GetOrderById(long id)
+        public async Task<IActionResult> GetOrderById(long id)
         {
-            return Ok();
+            
+            return Ok(_orderAppService.GetById(id));
         }
 
-        [HttpPost]
-        public IActionResult Post(Order order)
+        public async Task<IActionResult> Update(Order id)
         {
+            var order = _orderAppService.GetById(id);
+            await _orderAppService.UpdateAsync(order);
             return Ok();
         }
-
-        [HttpPut]
-        public IActionResult Put(Order id)
-        {
-            return Ok();
-        }
-
-        /*protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }*/
     }
 }

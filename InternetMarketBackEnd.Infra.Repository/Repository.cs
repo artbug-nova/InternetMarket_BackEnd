@@ -26,7 +26,6 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
 
         public async Task AddAsync(TEntity entity)
         {
-            
             dbSet.Add(entity);
             DbContext.SaveChanges();
         }
