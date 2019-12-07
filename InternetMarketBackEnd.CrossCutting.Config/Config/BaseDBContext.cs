@@ -11,7 +11,7 @@ namespace InternetMarketBackEnd.CrossCutting.Config.Config
         public int? CurrentUserId { get; private set; }
         public BaseDBContext(DbContextOptions options):base(options)
         {
-            Database.EnsureCreated();
+            
         }
         public new DbSet<TEntity> Set<TEntity>() where TEntity: class
         {

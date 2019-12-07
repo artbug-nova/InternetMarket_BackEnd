@@ -1,21 +1,19 @@
 ﻿using InternetMarketBackEnd.Core.Infrastructure.Data;
 using InternetMarketBackEnd.Domain.Entity;
-using InternetMarketBackEnd.Domain.Repository;
-using InternetMarketBackEnd.Infra.Data.Config;
 using InternetMarketBackEnd.Infra.Repository.Common;
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace InternetMarketBackEnd.Infra.Repository
 {
-    public class OrderRepository: Repository<Order>, IOrderRepository
+    public class ProductRepository : Repository<Product>, IProductRepository
     {
         private readonly IDbContext dbContext;
 
-        public OrderRepository(IDbContext dbContext) : base(dbContext) {
+        public ProductRepository(IDbContext dbContext) : base(dbContext)
+        {
             this.dbContext = dbContext;
         }
-
-      
     }
 }

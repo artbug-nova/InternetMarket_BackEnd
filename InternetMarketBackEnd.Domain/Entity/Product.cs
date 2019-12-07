@@ -9,26 +9,28 @@ using System.Text.Json.Serialization;
 
 namespace InternetMarketBackEnd.Domain.Entity
 {
-    [Table("Order")]
-    public class Order : BaseEntity<long>, ISelfValidation
+    [Table("Product")]
+    public class Product : BaseEntity<long>, ISelfValidation
     {
-        //public Order() { }
-        
+        [Column("Name_product")]
         public String Name { get; set; }
-        public String ShortDesctiption { get; set; }
+        [Column("Description_product")]
+        public String Description { get; set; }
+        [Column("Price_product")]
         public decimal Price { get; set; }
-        public long ProductId { get; set; }
-        public Product Product { get; set; }
-        public ICollection<OrderUserBag> OrderUserBags { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public ICollection<OrderUserBag> OrderUserBags{ get; set; }
         [NotMapped]
         [JsonIgnore]
         public ValidationResult ValidationResult { get; private set; }
         [NotMapped]
+        [JsonIgnore]
         public bool IsValid
         {
-            get{
+            get
+            {
                 var valid = new OrderIsValidValidation();
-                ValidationResult = valid.Valid(this);
+                ValidationResult = valid.Valid(new Order { });
                 return ValidationResult.IsValid;
             }
         }
