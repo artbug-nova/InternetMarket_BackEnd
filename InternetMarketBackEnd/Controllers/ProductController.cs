@@ -9,32 +9,38 @@ using System.Threading.Tasks;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [Route("api/[controller]")]
-    public class ProductController : BaseApiController
+
+    public class ProductController : BaseApiController, ICRUDController<Product>
     {
         private readonly IProductAppService _appService;
         public ProductController(IProductAppService appService)
         {
             _appService = appService;
         }
-        [HttpGet]
-        [Route("add")]
-        public IActionResult Add()
+        [HttpPost]
+        public async Task<IActionResult> Add(Product order)
         {
-            _appService.Add(new Product
-            {
-                Name = "пылесос",
-                //Description = "Super pile",
-                Price = 11
-            });
+            await _appService.AddAsync(order);
             return Ok();
         }
-        
-        [HttpGet("/get/{id}")]
-        public IActionResult Get(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete(long id)
         {
-            var data = _appService.GetById(id);
-            return Ok(data);
+            var Product = _appService.GetById(id);
+            await _appService.RemoveAsync(Product);
+            return Ok();
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetOrderById(long id)
+        {
+            return Ok(_appService.GetById(id));
+        }
+        [HttpPut]
+        public async Task<IActionResult> Update(Product id)
+        {
+            var Product = _appService.GetById(id);
+            await _appService.UpdateAsync(Product);
+            return Ok();
         }
     }
 }

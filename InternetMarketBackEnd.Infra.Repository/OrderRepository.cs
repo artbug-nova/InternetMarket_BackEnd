@@ -15,7 +15,5 @@ namespace InternetMarketBackEnd.Infra.Repository
         public OrderRepository(IDbContext dbContext) : base(dbContext) {
             this.dbContext = dbContext;
         }
-
-      
     }
 }

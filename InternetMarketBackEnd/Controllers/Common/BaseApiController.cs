@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InternetMarketBackEnd.Controllers.Common
 {
     [ApiController]
+    [Route("api/[controller]/[action]")]
     public class BaseApiController : ControllerBase, IDisposable
     {
         public void Dispose()

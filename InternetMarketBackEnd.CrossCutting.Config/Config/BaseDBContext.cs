@@ -9,7 +9,7 @@ namespace InternetMarketBackEnd.CrossCutting.Config.Config
     public class BaseDBContext : DbContext, IDbContext
     {
         public int? CurrentUserId { get; private set; }
-        public BaseDBContext(DbContextOptions options):base(options)
+        public BaseDBContext(DbContextOptions options) : base(options)
         {
             
         }
