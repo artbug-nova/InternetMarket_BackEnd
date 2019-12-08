@@ -9,6 +9,6 @@ namespace InternetMarketBackEnd.Core.Domain.Service
         TEntity FindBy(ISpecification<TEntity> spec, bool @readonly = false);
         IQueryable<TEntity> FilterBy(ISpecification<TEntity> spec, bool @readonly = false);
         IQueryable<TEntity> GetAll(bool @readonly = false);
-        TEntity GetById(object id, bool @readonly = false);
+        TEntity GetById(long id, bool @readonly = false);
     }
 }

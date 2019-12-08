@@ -58,7 +58,7 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
             throw new NotImplementedException();
         }
 
-        public TEntity GetById(int id)
+        public TEntity GetById(long id)
         {
             return dbSet.SingleOrDefault(s => s.Id == id);
         }
