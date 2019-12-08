@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InternetMarketBackEnd.Controllers
 {
-    [Route("api/[controller]")]
+    
     public class OrderController : BaseApiController, ICRUDController<Order>
     {
         private readonly IOrderAppService _orderAppService;
@@ -22,13 +22,13 @@ namespace InternetMarketBackEnd.Controllers
                 throw new ArgumentNullException("IOrderAppService");
             _orderAppService = orderAppService;
         }
-
+        [HttpPost]
         public async Task<IActionResult> Add(Order order)
         {
             await _orderAppService.AddAsync(order);
             return Ok(order);
         }
-
+        [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {
             var order = _orderAppService.GetById(id);
@@ -36,13 +36,13 @@ namespace InternetMarketBackEnd.Controllers
 
             return Ok();
         }
-
+        [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {
             
             return Ok(_orderAppService.GetById(id));
         }
-
+        [HttpPut]
         public async Task<IActionResult> Update(Order id)
         {
             var order = _orderAppService.GetById(id);

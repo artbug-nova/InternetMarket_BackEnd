@@ -5,6 +5,7 @@ using InternetMarketBackEnd.Core.Domain.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InternetMarketBackEnd.Domain.Services.Common
 {
@@ -94,6 +95,21 @@ namespace InternetMarketBackEnd.Domain.Services.Common
         }
 
         public ValidationResult Update(IEnumerable<TEntity> entities)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> AddAsync(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> UpdateAsync(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> RemoveAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
