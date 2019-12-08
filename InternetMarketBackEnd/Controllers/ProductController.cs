@@ -36,9 +36,9 @@ namespace InternetMarketBackEnd.Controllers
             return Ok(_appService.GetById(id));
         }
         [HttpPut]
-        public async Task<IActionResult> Update(Product id)
+        public async Task<IActionResult> Update(Product product)
         {
-            var Product = _appService.GetById(id);
+            var Product = _appService.GetById(product.Id);
             await _appService.UpdateAsync(Product);
             return Ok();
         }

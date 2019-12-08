@@ -75,7 +75,7 @@ namespace InternetMarketBackEnd.Domain.Services.Common
             //return _repository.GetAll(@readonly);
         }
 
-        public TEntity GetById(object id, bool @readonly = false)
+        public TEntity GetById(long id, bool @readonly = false)
         {
             return _repository.GetById((int)id);
             //return TEntity;//_repository.GetById(id, @readonly);
