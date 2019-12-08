@@ -47,6 +47,13 @@ namespace InternetMarketBackEnd
             services.ConfigureEF(Configuration.GetConnectionString("MarketDatabase"));
             services.ConfigureCors();
             services.ConfigureSwagger();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
+            services.AddMvc();
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
@@ -63,16 +70,19 @@ namespace InternetMarketBackEnd
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCors("AllowAnyOrigin");
             app.UseRouting();
-            app.UseAuthorization();
             app.UseSwagger();
             app.ApplicationSwagger();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            //app.UseMvc();
         }
     }
 }
