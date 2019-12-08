@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using InternetMarketBackEnd.Application.Interfaces;
 using InternetMarketBackEnd.Controllers.Common;
 using InternetMarketBackEnd.Domain.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,7 @@ namespace InternetMarketBackEnd.Controllers
 
             return Ok();
         }
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {

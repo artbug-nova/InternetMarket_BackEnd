@@ -1,6 +1,7 @@
 ﻿using InternetMarketBackEnd.Application.Interfaces;
 using InternetMarketBackEnd.Controllers.Common;
 using InternetMarketBackEnd.Domain.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace InternetMarketBackEnd.Controllers
             await _appService.RemoveAsync(Product);
             return Ok();
         }
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {
