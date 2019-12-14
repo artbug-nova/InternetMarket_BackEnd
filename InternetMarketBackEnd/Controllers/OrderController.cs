@@ -47,6 +47,7 @@ namespace InternetMarketBackEnd.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(Order order)
         {
+            
             var orders = _orderAppService.GetById(order.Id);
             await _orderAppService.UpdateAsync(orders);
             return Ok();

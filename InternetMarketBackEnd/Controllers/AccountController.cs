@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Security.Claims;
 using InternetMarketBackEnd.token;
 using InternetMarketBackEnd.Controllers.Common;
+using InternetMarketBackEnd.Domain.Entity;
 
 namespace InternetMarketBackEnd.Controllers
 {
@@ -21,6 +22,12 @@ namespace InternetMarketBackEnd.Controllers
             new Person {Login="admin@gmail.com", Password="12345", Role = "admin" },
             new Person { Login="qwerty", Password="55555", Role = "user" }
         };
+        [Route("/registration")]
+        public async Task<IActionResult> RegistrationUser(User user)
+        {
+            return Ok();
+        }
+
         [Route("/token")]
         [HttpPost]
         public async Task Token(Person user)
