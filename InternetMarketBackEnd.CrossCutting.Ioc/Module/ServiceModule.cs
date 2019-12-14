@@ -11,6 +11,7 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
             //builder.RegisterType<Example>().As<IExample>();
             builder.RegisterType<OrderAppService>().As<IOrderAppService>();
             builder.RegisterType<ProductAppService>().As<IProductAppService>();
+            builder.RegisterType<UserAppService>().As<IUserAppService>();
         }
     }
 }

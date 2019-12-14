@@ -11,31 +11,33 @@ using System.Security.Claims;
 using InternetMarketBackEnd.token;
 using InternetMarketBackEnd.Controllers.Common;
 using InternetMarketBackEnd.Domain.Entity;
+using InternetMarketBackEnd.Application.Interfaces;
+using InternetMarketBackEnd.Shared.Enums;
 
 namespace InternetMarketBackEnd.Controllers
 {
     [Route("api/[controller]")]
     public class AccountController : BaseApiController
     {
-        private List<Person> people = new List<Person>
+        private readonly IUserAppService _userAppService;
+        public AccountController(IUserAppService userAppService)
         {
-            new Person {Login="admin@gmail.com", Password="12345", Role = "admin" },
-            new Person { Login="qwerty", Password="55555", Role = "user" }
-        };
+            this._userAppService = userAppService;
+        }
         [Route("/registration")]
-        public async Task<IActionResult> RegistrationUser(User user)
+        [HttpPost]
+        public async Task<IActionResult> RegistrationUser([FromBody]User user)
         {
-            return Ok();
+            user.UserRoleId = (long)UserRoleEnum.USER;
+            await _userAppService.AddAsync(user);
+            return Ok(user);
         }
 
         [Route("/token")]
         [HttpPost]
-        public async Task Token(Person user)
+        public async Task Token(User user)
         {
-            var username = user.Login;//Request.Form["username"];
-            var password = user.Password;//Request.Form["password"];
-
-            var identity = GetIdentity(username, password);
+            var identity = GetIdentity(user);
             if (identity == null)
             {
                 Response.StatusCode = 400;
@@ -59,21 +61,19 @@ namespace InternetMarketBackEnd.Controllers
                 access_token = encodedJwt,
                 username = identity.Name
             };
-
-            // сериализация ответа
             Response.ContentType = "application/json";
             await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
 
-        private ClaimsIdentity GetIdentity(string username, string password)
+        private ClaimsIdentity GetIdentity(User user)
         {
-            Person person = people.FirstOrDefault(x => x.Login == username && x.Password == password);
+            User person = _userAppService.GetUserWithRole(user);
             if (person != null)
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, person.Login),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, person.Role)
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, person.Email),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, person.UserRole.UserRoleName)
                 };
                 ClaimsIdentity claimsIdentity =
                 new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,

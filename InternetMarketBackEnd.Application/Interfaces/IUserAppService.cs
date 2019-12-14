@@ -3,10 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InternetMarketBackEnd.Infra.Repository.Common
+namespace InternetMarketBackEnd.Application.Interfaces
 {
-    public interface IUserRepository : IRepository<User>
-    {
+    public interface IUserAppService : IAppService<User> {
         User GetUserWithRole(User user);
     }
 }
