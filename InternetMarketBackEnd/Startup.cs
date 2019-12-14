@@ -82,7 +82,6 @@ namespace InternetMarketBackEnd
             {
                 endpoints.MapControllers();
             });
-            //app.UseMvc();
         }
     }
 }
