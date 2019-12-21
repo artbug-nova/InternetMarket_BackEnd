@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.Domain", "InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj", "{F8EE6948-CBA0-4E73-A998-E2BC7A7E79BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.CrossCutting.Automapper", "InternetMarketBackEnd.CrossCutting.Automapper\InternetMarketBackEnd.CrossCutting.Automapper.csproj", "{7DA84FD1-89F1-4819-9B96-CFE09D6AB518}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.CrossCutting.Config", "InternetMarketBackEnd.CrossCutting.Config\InternetMarketBackEnd.CrossCutting.Config.csproj", "{64AC5CA8-BD31-487D-954F-357880D63914}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InternetMarketBackEnd.CrossCutting.Ioc", "InternetMarketBackEnd.CrossCutting.Ioc\InternetMarketBackEnd.CrossCutting.Ioc.csproj", "{BE000E55-429D-471B-BF7A-1F1BDDB983E8}"
@@ -55,10 +53,6 @@ Global
 		{F8EE6948-CBA0-4E73-A998-E2BC7A7E79BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8EE6948-CBA0-4E73-A998-E2BC7A7E79BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8EE6948-CBA0-4E73-A998-E2BC7A7E79BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DA84FD1-89F1-4819-9B96-CFE09D6AB518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DA84FD1-89F1-4819-9B96-CFE09D6AB518}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DA84FD1-89F1-4819-9B96-CFE09D6AB518}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DA84FD1-89F1-4819-9B96-CFE09D6AB518}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64AC5CA8-BD31-487D-954F-357880D63914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64AC5CA8-BD31-487D-954F-357880D63914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64AC5CA8-BD31-487D-954F-357880D63914}.Release|Any CPU.ActiveCfg = Release|Any CPU
