@@ -30,6 +30,7 @@
     <ProjectReference Include="..\InternetMarketBackEnd.Domain.Services\InternetMarketBackEnd.Domain.Services.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Domain\InternetMarketBackEnd.Domain.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Infra.Data\InternetMarketBackEnd.Infra.Data.csproj" />
+    <ProjectReference Include="..\InternetMarketBackEnd.Shared\InternetMarketBackEnd.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using InternetMarketBackEnd.Application.Interfaces;
+using InternetMarketBackEnd.Attributes;
 using InternetMarketBackEnd.Controllers.Common;
 using InternetMarketBackEnd.Domain.Entity;
+using InternetMarketBackEnd.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +21,7 @@ namespace InternetMarketBackEnd.Controllers
 
         public OrderController(IOrderAppService orderAppService)
         {
-            if (orderAppService == null)
-                throw new ArgumentNullException("IOrderAppService");
-            _orderAppService = orderAppService;
+            _orderAppService = orderAppService ?? throw new ArgumentNullException("IOrderAppService");
         }
         [HttpPost]
         public async Task<IActionResult> Add(Order order)
@@ -37,7 +37,7 @@ namespace InternetMarketBackEnd.Controllers
 
             return Ok();
         }
-        [Authorize]
+        [AuthorizeRole(UserRoleEnum.ADMIN, UserRoleEnum.USER)]
         [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {
@@ -47,6 +47,7 @@ namespace InternetMarketBackEnd.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(Order order)
         {
+            
             var orders = _orderAppService.GetById(order.Id);
             await _orderAppService.UpdateAsync(orders);
             return Ok();

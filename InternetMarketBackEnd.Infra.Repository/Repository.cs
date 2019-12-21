@@ -13,7 +13,7 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity<long>, new()
     {
         private readonly IDbContext DbContext;
-        private readonly DbSet<TEntity> dbSet;
+        public readonly DbSet<TEntity> dbSet;
 
         public Repository(IDbContext dbContext)
         {
