@@ -1,13 +1,15 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
-namespace InternetMarketBackEnd.token
+namespace InternetMarketBackEnd.CrossCutting.Config.Config
 {
-    public class AuthOptions
+    public static class AuthOptionsConfig
     {
         public const string ISSUER = "MyAuthServer"; // издатель токена
         public const string AUDIENCE = "http://localhost:44385/"; // потребитель токена
-        const string KEY = "mysupersecret_secretkey!123";   // ключ для шифрации
+        const string KEY = "secretkey!123";   // ключ для шифрации
         public const int LIFETIME = 1; // время жизни токена - 1 минута
         public static SymmetricSecurityKey GetSymmetricSecurityKey()
         {

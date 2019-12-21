@@ -1,6 +1,5 @@
 using InternetMarketBackEnd.Configuration;
 using InternetMarketBackEnd.Infra.Data;
-using InternetMarketBackEnd.token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 

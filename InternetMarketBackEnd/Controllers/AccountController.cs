@@ -7,11 +7,11 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json;
 using System.Security.Claims;
-using InternetMarketBackEnd.token;
 using InternetMarketBackEnd.Controllers.Common;
 using InternetMarketBackEnd.Domain.Entity;
 using InternetMarketBackEnd.Application.Interfaces;
 using InternetMarketBackEnd.Shared.Enums;
+using InternetMarketBackEnd.CrossCutting.Config.Config;
 
 namespace InternetMarketBackEnd.Controllers
 {
@@ -47,12 +47,12 @@ namespace InternetMarketBackEnd.Controllers
             var now = DateTime.UtcNow;
             // создаем JWT-токен
             var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
+                    issuer: AuthOptionsConfig.ISSUER,
+                    audience: AuthOptionsConfig.AUDIENCE,
                     notBefore: now,
                     claims: identity.Claims,
-                    expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                    expires: now.Add(TimeSpan.FromMinutes(AuthOptionsConfig.LIFETIME)),
+                    signingCredentials: new SigningCredentials(AuthOptionsConfig.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             var response = new

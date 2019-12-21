@@ -5,9 +5,5 @@ using System.Text;
 
 namespace InternetMarketBackEnd.Application.Interfaces
 {
-    public interface IOrderAppService : IAppService<Order>
-    {
-        String Get();
-        
-    }
+    public interface IOrderAppService : IAppService<Order> { }
 }

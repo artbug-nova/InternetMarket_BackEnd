@@ -12,15 +12,7 @@ namespace InternetMarketBackEnd.Domain.Services
 
         public OrderAppService(IOrderRepository repository) : base(repository)
         {
-            if (repository == null)
-                throw new ArgumentNullException("repository");
-            _orderRepository = repository;
-            
-        }
-
-        public string Get()
-        {
-            return "Hello";
+            _orderRepository = repository ?? throw new ArgumentNullException("repository");
         }
     }
 }

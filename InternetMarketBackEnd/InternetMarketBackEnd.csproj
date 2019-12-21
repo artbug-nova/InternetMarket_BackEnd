@@ -33,4 +33,8 @@
     <ProjectReference Include="..\InternetMarketBackEnd.Shared\InternetMarketBackEnd.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="token\" />
+  </ItemGroup>
+
 </Project>
