@@ -11,9 +11,7 @@ namespace InternetMarketBackEnd.Domain.Services
         private readonly IUserRepository _userRepository;
         public UserAppService(IUserRepository userRepository) : base(userRepository)
         {
-            if (userRepository == null)
-                throw new ArgumentNullException("repository");
-            _userRepository = userRepository;
+            _userRepository = userRepository ?? throw new ArgumentNullException("repository");
         }
 
         public User GetUserWithRole(User user)
