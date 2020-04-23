@@ -37,7 +37,7 @@ namespace InternetMarketBackEnd.Controllers
 
             return Ok();
         }
-        [AuthorizeRole(UserRoleEnum.ADMIN, UserRoleEnum.USER)]
+        //[AuthorizeRole(UserRoleEnum.ADMIN, UserRoleEnum.USER)]
         [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {
