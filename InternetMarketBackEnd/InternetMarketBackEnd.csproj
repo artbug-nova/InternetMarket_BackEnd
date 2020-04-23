@@ -21,6 +21,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="Packaging.Targets" Version="0.1.155" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
   </ItemGroup>
 
@@ -32,5 +33,15 @@
     <ProjectReference Include="..\InternetMarketBackEnd.Infra.Data\InternetMarketBackEnd.Infra.Data.csproj" />
     <ProjectReference Include="..\InternetMarketBackEnd.Shared\InternetMarketBackEnd.Shared.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="etc\config.json">
+      <ExcludeFromSingeFile>true</ExcludeFromSingeFile>
+      <CopyToOutputDirectory>true</CopyToOutputDirectory>
+      <CopyToPublishDirectory>true</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="Packages" DependsOnTargets="Create" Outputs="$"/>
 
 </Project>

@@ -12,13 +12,13 @@ namespace InternetMarketBackEnd.Infra.Data.Config
     public class UnitOfWork<TContext> : IUnitOfWork<TContext>, IDisposable
         where TContext:IDbContext
     {
-        public IDbContext _marketContext;
+        private IDbContext _marketContext;
         private IDbContextTransaction _transaction;
         private bool _disposed;
 
         //public IUnitOfWork<TContext> MarketContext { get { return _marketContext; } private set ; }
 
-        
+
         public IDbContext MarketContext { get => _marketContext; }
 
         public UnitOfWork(IDbContext marketContext)
@@ -46,7 +46,7 @@ namespace InternetMarketBackEnd.Infra.Data.Config
             }
             finally
             {
-                _transaction.Dispose();
+                if (_transaction != null) _transaction.Dispose();
             }
         }
 
