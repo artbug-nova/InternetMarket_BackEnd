@@ -1,0 +1,11 @@
+﻿[Unit]
+Description=Internet Market BackEnd
+
+[Service]
+WorkingDirectory=/opt/InternetMarketBackend
+ExecStart=/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/%i.pid --cd /etc/openvpn/ --config %i.conf
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

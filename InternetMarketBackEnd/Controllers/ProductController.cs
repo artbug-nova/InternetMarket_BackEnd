@@ -27,7 +27,7 @@ namespace InternetMarketBackEnd.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {
-            var Product = _appService.GetById(id);
+            var Product = await _appService.GetById(id);
             await _appService.RemoveAsync(Product);
             return Ok();
         }
@@ -35,12 +35,12 @@ namespace InternetMarketBackEnd.Controllers
         [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {
-            return Ok(_appService.GetById(id));
+            return Ok(await _appService.GetById(id));
         }
         [HttpPut]
         public async Task<IActionResult> Update(Product product)
         {
-            var Product = _appService.GetById(product.Id);
+            var Product = await _appService.GetById(product.Id);
             await _appService.UpdateAsync(Product);
             return Ok();
         }

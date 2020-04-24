@@ -32,23 +32,23 @@ namespace InternetMarketBackEnd.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {
-            var order = _orderAppService.GetById(id);
+            var order = await _orderAppService.GetById(id);
             await _orderAppService.RemoveAsync(order);
 
             return Ok();
         }
-        [AuthorizeRole(UserRoleEnum.ADMIN, UserRoleEnum.USER)]
+        //[AuthorizeRole(UserRoleEnum.ADMIN, UserRoleEnum.USER)]
         [HttpGet]
         public async Task<IActionResult> GetOrderById(long id)
         {
             
-            return Ok(_orderAppService.GetById(id));
+            return Ok(await _orderAppService.GetById(id));
         }
         [HttpPut]
         public async Task<IActionResult> Update(Order order)
         {
             
-            var orders = _orderAppService.GetById(order.Id);
+            var orders = await _orderAppService.GetById(order.Id);
             await _orderAppService.UpdateAsync(orders);
             return Ok();
         }
