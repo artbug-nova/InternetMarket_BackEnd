@@ -9,7 +9,7 @@ namespace InternetMarketBackEnd.CrossCutting.Config.Config
     {
         public const string ISSUER = "MyAuthServer"; // издатель токена
         public const string AUDIENCE = "http://localhost:44385/"; // потребитель токена
-        const string KEY = "secretkey!123";   // ключ для шифрации
+        const string KEY = "1234567890 a very long word";   // ключ для шифрации
         public const int LIFETIME = 1; // время жизни токена - 1 минута
         public static SymmetricSecurityKey GetSymmetricSecurityKey()
         {

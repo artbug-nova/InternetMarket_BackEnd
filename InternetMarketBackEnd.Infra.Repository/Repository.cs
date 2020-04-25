@@ -26,7 +26,7 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
 
         public async Task AddAsync(TEntity entity)
         {
-            dbSet.Add(entity);
+            await dbSet.AddAsync(entity);
             DbContext.SaveChanges();
         }
         public void Add(TEntity entity)
@@ -58,9 +58,9 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
             throw new NotImplementedException();
         }
 
-        public TEntity GetById(long id)
+        public async Task<TEntity> GetById(long id)
         {
-            return dbSet.SingleOrDefault(s => s.Id == id);
+            return await dbSet.SingleOrDefaultAsync(s => s.Id == id);
         }
 
         public void Update(TEntity entity)

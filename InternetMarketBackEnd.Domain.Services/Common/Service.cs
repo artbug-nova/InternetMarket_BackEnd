@@ -57,27 +57,27 @@ namespace InternetMarketBackEnd.Domain.Services.Common
             Dispose(false);
         }
 
-        public IQueryable<TEntity> FilterBy(ISpecification<TEntity> spec, bool @readonly = false)
+        public async Task<IQueryable<TEntity>> FilterBy(ISpecification<TEntity> spec, bool @readonly = false)
         {
             throw new NotImplementedException();
             //return _repository.FilterBy(spec, @readonly);
         }
 
-        public TEntity FindBy(ISpecification<TEntity> spec, bool @readonly = false)
+        public async Task<TEntity> FindBy(ISpecification<TEntity> spec, bool @readonly = false)
         {
             throw new NotImplementedException();
             //return _repository.FindBy(spec, @readonly);
         }
 
-        public IQueryable<TEntity> GetAll(bool @readonly = false)
+        public async Task<IQueryable<TEntity>> GetAll(bool @readonly = false)
         {
             throw new NotImplementedException();
             //return _repository.GetAll(@readonly);
         }
 
-        public TEntity GetById(long id, bool @readonly = false)
+        public async Task<TEntity> GetById(long id, bool @readonly = false)
         {
-            return _repository.GetById((int)id);
+            return await _repository.GetById((int)id);
             //return TEntity;//_repository.GetById(id, @readonly);
         }
 

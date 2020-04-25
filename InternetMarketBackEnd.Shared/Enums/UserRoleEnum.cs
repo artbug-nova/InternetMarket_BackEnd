@@ -7,6 +7,6 @@ namespace InternetMarketBackEnd.Shared.Enums
     public enum UserRoleEnum : long
     {
         USER = 1,
-        ADMIN = 2
+        ADMIN = 3
     }
 }
