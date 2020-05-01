@@ -21,40 +21,12 @@ namespace InternetMarketBackEnd.Domain.Entity
 
         public static String GetMd5Hash(String input)
         {
-            using(MD5 HashMD5 = MD5.Create())
-            {
-                byte[] data = HashMD5.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-                StringBuilder stringBuilder = new StringBuilder();
-
-                for(int i = 0; i < data.Length; i++)
-                {
-                    stringBuilder.Append(data[i].ToString("x2"));
-                }
-
-                return stringBuilder.ToString();
-            }
+            return BCrypt.Net.BCrypt.HashPassword(input);
         }
 
         public static Boolean VerifyMd5Hash(String input, String hash)
         {
-            using (MD5 md5Hash = MD5.Create())
-            {
-                // Hash the input.
-                string hashOfInput = GetMd5Hash(input);
-
-                // Create a StringComparer an compare the hashes.
-                StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-                if (0 == comparer.Compare(hashOfInput, hash))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
+            return BCrypt.Net.BCrypt.Verify(input, hash);
         }
     }
 }
