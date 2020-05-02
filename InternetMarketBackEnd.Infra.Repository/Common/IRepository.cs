@@ -12,6 +12,7 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
         void Add(TEntity entity);
         Task<TEntity> GetAsync(int id);
         Task<TEntity> GetById(long id);
+        Task<IEnumerable<TEntity>> GetAll();
         Task<IQueryable<TEntity>> GetAsync();
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);

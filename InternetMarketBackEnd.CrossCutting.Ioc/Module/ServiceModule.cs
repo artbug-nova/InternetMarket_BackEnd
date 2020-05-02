@@ -8,10 +8,10 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterType<Example>().As<IExample>();
             builder.RegisterType<OrderAppService>().As<IOrderAppService>();
             builder.RegisterType<ProductAppService>().As<IProductAppService>();
             builder.RegisterType<UserAppService>().As<IUserAppService>();
+            builder.RegisterType<CategoryAppService>().As<ICategoryAppService>();
         }
     }
 }

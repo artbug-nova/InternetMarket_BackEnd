@@ -13,7 +13,7 @@ namespace InternetMarketBackEnd.Application.Interfaces
     {
         Task<TEntity> FindBy(ISpecification<TEntity> spec, bool @readonly = false);
         Task<IQueryable<TEntity>> FilterBy(ISpecification<TEntity> spec, bool @readonly = false);
-        Task<IQueryable<TEntity>> GetAll(bool @readonly = false);
+        Task<IEnumerable<TEntity>> GetAll(bool @readonly = false);
         Task<TEntity> GetById(long id, bool @readonly = false);
 
     }

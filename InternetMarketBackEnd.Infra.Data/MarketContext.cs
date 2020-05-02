@@ -17,6 +17,7 @@ namespace InternetMarketBackEnd.Infra.Data
             builder.ApplyConfiguration(new OrderUserBagMapping());
             builder.ApplyConfiguration(new UserMapping());
             builder.ApplyConfiguration(new UserRoleMapping());
+            builder.ApplyConfiguration(new CategoryMapping());
         }
     }
 }

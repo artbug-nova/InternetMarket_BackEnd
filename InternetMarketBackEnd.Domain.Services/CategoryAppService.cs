@@ -2,12 +2,11 @@
 using InternetMarketBackEnd.Domain.Entity;
 using InternetMarketBackEnd.Domain.Services.Common;
 using InternetMarketBackEnd.Infra.Repository.Common;
-using System;
 
 namespace InternetMarketBackEnd.Domain.Services
 {
-    public class OrderAppService : Service<Order>, IOrderAppService
+    public class CategoryAppService : Service<Category>, ICategoryAppService
     {
-        public OrderAppService(IOrderRepository repository) : base(repository) { }
+        public CategoryAppService(ICategoryRepository repository) : base(repository) { }
     }
 }

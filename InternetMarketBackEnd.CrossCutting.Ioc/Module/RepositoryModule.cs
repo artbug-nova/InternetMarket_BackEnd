@@ -14,6 +14,7 @@ namespace InternetMarketBackEnd.CrossCutting.Ioc.Module
             builder.RegisterType<OrderRepository>().As<IOrderRepository>();
             builder.RegisterType<ProductRepository>().As<IProductRepository>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
         }
     }
 }

@@ -69,10 +69,9 @@ namespace InternetMarketBackEnd.Domain.Services.Common
             //return _repository.FindBy(spec, @readonly);
         }
 
-        public async Task<IQueryable<TEntity>> GetAll(bool @readonly = false)
+        public async Task<IEnumerable<TEntity>> GetAll(bool @readonly = false)
         {
-            throw new NotImplementedException();
-            //return _repository.GetAll(@readonly);
+            return await _repository.GetAll();
         }
 
         public async Task<TEntity> GetById(long id, bool @readonly = false)

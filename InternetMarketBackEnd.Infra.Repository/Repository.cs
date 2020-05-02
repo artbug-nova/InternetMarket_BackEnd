@@ -67,5 +67,10 @@ namespace InternetMarketBackEnd.Infra.Repository.Common
         {
             dbSet.Update(entity);
         }
+
+        public async Task<IEnumerable<TEntity>> GetAll()
+        {
+            return await dbSet.ToListAsync();
+        }
     }
 }
